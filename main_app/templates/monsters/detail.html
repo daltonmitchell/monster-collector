@@ -3,15 +3,38 @@
 
 <h1>Monster Details</h1>
 
-<div class="card">
-  <div class="card-content">
-    <span class="card-title">{{ monster.name }}</span>
-    <p>Type: {{ monster.type }}</p>
-    <p>Size: {{ monster.size }}</p>
+<div class="row">
+  <div class="col s6">
+    <div class="card">
+      <div class="card-content">
+        <span class="card-title">{{ monster.name }}</span>
+        <p>Type: {{ monster.type }}</p>
+        <p>Size: {{ monster.size }}</p>
+      </div>
+      <div class="card-action">
+        <a href="{% url 'monsters_update' monster.id %}">Edit</a>
+        <a href="{% url 'monsters_delete' monster.id %}">Delete</a>
+      </div>
+    </div>
   </div>
-  <div class="card-action">
-    <a href="{% url 'monsters_update' monster.id %}">Edit</a>
-    <a href="{% url 'monsters_delete' monster.id %}">Delete</a>
+  <div class="col s6">
+    <table class="striped">
+      <thead>
+        <tr><th>Str</th><th>Dex</th><th>Con</th><th>Int</th><th>Wis</th><th>Cha</th></tr>
+      </thead>
+      <tbody>
+        {% for stat in monster.stat_set.all %}
+          <tr>
+            <td>{{stat.strength}}</td>
+            <td>{{stat.dexterity}}</td>
+            <td>{{stat.constitution}}</td>
+            <td>{{stat.intelligence}}</td>
+            <td>{{stat.wisdom}}</td>
+            <td>{{stat.charisma}}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
   </div>
 </div>
 
