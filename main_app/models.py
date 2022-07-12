@@ -10,3 +10,16 @@ class Monster(models.Model):
 
     def get_absolute_url(self):
         return reverse('detail', kwargs={'monster_id': self.id})
+
+class Stats(models.Model):
+    strength = models.IntegerField()
+    dexterity = models.IntegerField()
+    constitution = models.IntegerField()
+    intelligence = models.IntegerField()
+    wisdom = models.IntegerField()
+    charisma = models.IntegerField()
+
+    monster = models.ForeignKey(Monster, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"{self}"
