@@ -11,7 +11,7 @@ class Monster(models.Model):
     def get_absolute_url(self):
         return reverse('detail', kwargs={'monster_id': self.id})
 
-class Stats(models.Model):
+class Stat(models.Model):
     strength = models.IntegerField()
     dexterity = models.IntegerField()
     constitution = models.IntegerField()
