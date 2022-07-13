@@ -18,6 +18,11 @@
     </div>
   </div>
   <div class="col s6">
+    <form action="{% url 'add_stat' monster.id %}" method="POST">
+      {% csrf_token %}
+      {{ stat_form.as_p }}
+      <input type="submit" class="btn" value="Add Stats">
+    </form>
     <table class="striped">
       <thead>
         <tr><th>Str</th><th>Dex</th><th>Con</th><th>Int</th><th>Wis</th><th>Cha</th></tr>
