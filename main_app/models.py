@@ -3,10 +3,20 @@ from django.db import models
 from django.urls import reverse
 
 # Create your models here.
+class Env(models.Model):
+    environment = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.environment
+
+    def get_absolute_url(self):
+        return reverse('env_detail', kwargs={'pk': self.id})
+
 class Monster(models.Model):
     name = models.CharField(max_length=100)
     type = models.CharField(max_length=100)
     size = models.CharField(max_length=100)
+    envs = models.ManyToManyField(Env)
 
     def get_absolute_url(self):
         return reverse('detail', kwargs={'monster_id': self.id})

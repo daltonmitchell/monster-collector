@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Environment List</h1>
+
+{% for env in env_list %}
+  <a href="{% url 'env_detail' env.id %}">
+    <div class="card">
+        <div class="card-content">
+            <span class="card-title">{{ env.environment }}</span>
+        </div>
+    </div>
+  </a>
+{% endfor %}
+
+{% endblock %}

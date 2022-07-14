@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Environment Details</h1>
+
+<div class="row">
+  <div class="col s6 col-offset-3">
+    <div class="card">
+      <div class="card-content">
+        <span class="card-title">{{ env.environment }}</span>
+      </div>
+      <div class="card-action">
+        <a href="{% url 'env_update' env.id %}">Edit</a>
+        <a href="{% url 'env_delete' env.id %}">Delete</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
